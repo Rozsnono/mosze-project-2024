@@ -9,9 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2013d29944f7283409c5e60fe00b8dad
+  - enabled: 1
+    path: Assets/Scenes/StoryLine.unity
+    guid: c03109ef88dd7ea43b369ab6b4d3714a
+  - enabled: 1
+    path: Assets/Scenes/GarageMenu.unity
+    guid: ad067859c71ae1e429e430484e231094
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 3d61be51553e2d24e9e48245ccd1d0ab
+  - enabled: 1
     path: Assets/Scenes/Galaxy.unity
     guid: 03966f2717f51b04483a5f1f5dc9e0e5
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 2013d29944f7283409c5e60fe00b8dad
+    path: Assets/Scenes/Game.unity
+    guid: d56a1edd8407962459f1b979f8abaa19
   m_configObjects: {}
