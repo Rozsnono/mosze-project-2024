@@ -8,6 +8,7 @@ public class GarageMenu : MonoBehaviour
 {
     public Image spaceshipImage;
     public TextMeshProUGUI spaceshipDescription;
+    public TextMeshProUGUI spaceShipName;
     public Spaceship[] spaceships;
 
     private int currentIndex = 0;
@@ -34,6 +35,7 @@ public class GarageMenu : MonoBehaviour
     void ShowSpaceship()
     {
         spaceshipImage.sprite = spaceships[currentIndex].image;
+        spaceShipName.text = spaceships[currentIndex].name;
         spaceshipDescription.text = spaceships[currentIndex].description;
     }
 

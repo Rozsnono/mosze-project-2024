@@ -491,8 +491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000031292, y: -121}
-  m_SizeDelta: {x: 500, y: 272.6169}
+  m_AnchoredPosition: {x: -0.4082, y: -150}
+  m_SizeDelta: {x: 930.8976, y: 218.7547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846149721
 MonoBehaviour:
@@ -541,8 +541,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -590,6 +590,140 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846149719}
+  m_CullTransparentMesh: 1
+--- !u!1 &881793417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 881793418}
+  - component: {fileID: 881793420}
+  - component: {fileID: 881793419}
+  m_Layer: 0
+  m_Name: SelectedShipName
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &881793418
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881793417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1577395524}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.4082, y: -1.5838}
+  m_SizeDelta: {x: 500, y: 57.168}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &881793419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881793417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: This ship...
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &881793420
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881793417}
   m_CullTransparentMesh: 1
 --- !u!1 &972670895
 GameObject:
@@ -759,6 +893,7 @@ RectTransform:
   m_Children:
   - {fileID: 1594789170}
   - {fileID: 846149720}
+  - {fileID: 881793418}
   - {fileID: 108718740}
   - {fileID: 1844453269}
   - {fileID: 1620022597}
@@ -846,13 +981,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceshipImage: {fileID: 1594789171}
   spaceshipDescription: {fileID: 846149721}
+  spaceShipName: {fileID: 881793419}
   spaceships:
-  - name: First
-    image: {fileID: 21300000, guid: cbab28461d9518149ab3cb61ef579074, type: 3}
-    description: First ship...
-  - name: Second
-    image: {fileID: 21300000, guid: cbab28461d9518149ab3cb61ef579074, type: 3}
-    description: Second ship...
+  - name: Nova Voyager
+    image: {fileID: 1429657626, guid: 994a5f86df4a3634daa5a5ccadba5e49, type: 3}
+    description: The Nova Voyager is the epitome of speed and agility. Originally
+      designed for interstellar scouting missions, its sleek hull and lightweight
+      frame make it a favorite among daring pilots. Although it lacks heavy armor,
+      the ship compensates with unmatched maneuverability, allowing you to outwit
+      enemies in even the most dangerous asteroid fields. Whether exploring unknown
+      sectors or evading enemy fire, the Nova Voyager never fails to impress.
+  - name: Titan Guardian
+    image: {fileID: -403940878, guid: 92d058aadcfd0344ca0920a3b9d3c86c, type: 3}
+    description: The Titan Guardian is a symbol of resilience and power. Built for
+      extended space missions, this ship boasts reinforced plating and a robust engine
+      capable of withstanding harsh environments. Pilots choose the Titan Guardian
+      for its reliability and endurance in battle. While it may not be the fastest
+      ship, it carries the weight of a legacy that has protected countless spacefarers
+      through the galaxy's most treacherous conflicts.
 --- !u!1 &1594789169
 GameObject:
   m_ObjectHideFlags: 0

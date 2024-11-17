@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShieldFollow : MonoBehaviour
 {
-    public Transform player;         // Játékos referenciája
+    private Transform player;         // Játékos referenciája
     public Vector3 offset;           // Offset a pajzs és a játékos között
     private float currentShieldHealth; // Pajzs aktuális életereje
 
@@ -13,34 +13,64 @@ public class ShieldFollow : MonoBehaviour
     public TextMeshProUGUI shieldHealtText;      // A UI Text elem, ahol az idõt megjelenítjük
     private Collider2D shieldCollider; // Pajzs hitbox (Collider)
 
+    public TextMeshProUGUI reloadTimerText;      // A UI Text elem, ahol az idõt megjelenítjük
+    private Rigidbody2D rb;
+
+    private float lastUse = 0f;
+
     private void Start()
     {
         // A játékos referenciájának ellenõrzése
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            try
+            {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            catch (System.Exception){}
         }
+        rb = GetComponent<Rigidbody2D>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         shieldCollider = GetComponent<Collider2D>();
+        lastUse = Time.time - PlayerStats.Instance.shieldReloadTime;
+
 
         currentShieldHealth = PlayerStats.Instance.maxShieldHealth; // Életerõ beállítása maximális értékre
         DeactivateShield(); // Alapértelmezett állapotban elrejtjük a pajzsot
+        Debug.Log(currentShieldHealth);
+
     }
 
     private void Update()
     {
         // Pajzs pozíciójának frissítése
-        if (player != null)
+        FollowPlayer();
+        if (player == null)
         {
-            transform.position = player.position + offset;
+            try
+            {
+                player = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            catch (System.Exception) { }
+        }
+        if (rb == null) 
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+        if(spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         // Pajzs megjelenítése kattintásra
-        if (Input.GetMouseButtonDown(1)) // Jobb egérgomb kattintás
+        if (Input.GetMouseButtonDown(1) && Time.time >= lastUse + PlayerStats.Instance.shieldReloadTime) // Jobb egérgomb kattintás
         {
             ActivateShield();
         }
+
+        UIReload();
+        RotateTowardsMouse();
     }
 
     private void ActivateShield()
@@ -55,19 +85,29 @@ public class ShieldFollow : MonoBehaviour
     {
         spriteRenderer.enabled = false;        // Pajzs elrejtése
         shieldCollider.enabled = false;        // Collider deaktiválása
+        lastUse = Time.time;
+
+    }
+
+    private void FollowPlayer()
+    {
+        if (player != null)
+        {
+            transform.position = player.position + offset;
+        }
     }
 
     public void TakeDamage(int damage)
     {
         // Sebzés érvényesítése a pajzson
         currentShieldHealth -= damage;
-        shieldHealtText.text = $"{currentShieldHealth:F0}/{PlayerStats.Instance.maxShieldHealth:F0}";
 
         if (currentShieldHealth <= 0)
         {
             currentShieldHealth = 0;
             DeactivateShield(); // Pajzs kikapcsolása, ha életerõ nullára csökken
         }
+        shieldHealtText.text = $"{currentShieldHealth:F0}/{PlayerStats.Instance.maxShieldHealth:F0}";
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -75,18 +115,52 @@ public class ShieldFollow : MonoBehaviour
         // Csak akkor sebzõdik, ha a pajzs aktív
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(20); // Sebzés értékének megadása; például 20
-            Destroy(collision.gameObject); // Lövedék megsemmisítése
+            TakeDamage(20); // Sebzés érték;
+            Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Asteroid"))
         {
-            TakeDamage(10); // Sebzés értékének megadása; például 20
-            Destroy(collision.gameObject); // Lövedék megsemmisítése
+            TakeDamage(0); // Sebzés érték;
         }
         else if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            TakeDamage(10); // Sebzés értékének megadása; például 20
-            Destroy(collision.gameObject); // Lövedék megsemmisítése
+            TakeDamage(5); // Sebzés érték;
         }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            TakeDamage(50); // Sebzés érték;
+        }
+        else if (collision.gameObject.CompareTag("Homing"))
+        {
+            TakeDamage(5); // Sebzés érték;
+        }
+    }
+
+    private void UIReload()
+    {
+        // Újratöltési idõ számítása és kijelzése
+        float timeSinceLastShot = Time.time - lastUse;
+        float timeLeft = Mathf.Max(PlayerStats.Instance.shieldReloadTime - timeSinceLastShot, 0);
+
+        // Frissítés a UI Text elemben
+        if (timeLeft > 0)
+        {
+            reloadTimerText.text = $"{timeLeft:F1}s";
+        }
+        else
+        {
+            reloadTimerText.text = "0,0!";
+        }
+    }
+
+    private void RotateTowardsMouse()
+    {
+        // Az egér pozíciójának lekérése a világban
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePosition - transform.position).normalized;
+
+        // Forgatás az egér irányába
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        rb.rotation = angle;
     }
 }

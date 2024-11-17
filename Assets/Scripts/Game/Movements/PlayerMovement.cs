@@ -9,20 +9,28 @@ public class PlayerMovement : MonoBehaviour
 
     private Camera mainCamera;
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        if(mainCamera == null)
+        {
+            mainCamera = Camera.main;
+        }
+
         // Irányítás az egér irányába
         RotateTowardsMouse();
 
         // Elõre (W) és hátra (S) gyorsítás
         HandleMovement();
+
     }
 
     private void RotateTowardsMouse()
@@ -40,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
+            UpdateAnimation(true);
             // Elõre gyorsítás W gombbal
             rb.AddForce(transform.up * thrustForce);
             // Sebesség korlátozása
@@ -50,11 +59,14 @@ public class PlayerMovement : MonoBehaviour
             // Hátrafelé gyorsítás S gombbal
             rb.AddForce(-transform.up * thrustForce);
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, PlayerStats.Instance.speed);
+            UpdateAnimation(true);
         }
         else
         {
             // Lassulás, amikor nincs nyomva a W vagy S gomb
             rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, decelerationRate * Time.deltaTime);
+            UpdateAnimation(false);
+
         }
 
         // Kamera határainak kiszámítása
@@ -78,5 +90,18 @@ public class PlayerMovement : MonoBehaviour
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
         clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
         transform.position = clampedPosition;
+    }
+
+    private void UpdateAnimation(bool isMoving)
+    {
+        // Ellenõrizd, hogy mozog-e a hajó
+        if (isMoving)
+        {
+            animator.Play("Moving");
+        }
+        else
+        {
+            animator.Play("Idle");
+        }
     }
 }

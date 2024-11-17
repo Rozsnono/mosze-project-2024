@@ -8,14 +8,19 @@ public class Asteroid : MonoBehaviour
     public float maxSpeed = 2f;      // Maximális sebesség
     private Vector2 movementDirection;
     private float speed;
+    private int rotationSpeed;
+    private Rigidbody2D rb;
 
     // Határok beállítása
-    public float boundaryLimit = 20f; // Az a határ, ahol megsemmisül az aszteroida
+    public float boundaryLimit = 100f; // Az a határ, ahol megsemmisül az aszteroida
 
     private void Start()
     {
         // Véletlenszerû sebesség beállítása a megadott minimum és maximum között
         speed = Random.Range(minSpeed, maxSpeed);
+        rotationSpeed = Random.Range(-5, 5);
+
+        rb = GetComponent<Rigidbody2D>();
 
         // Véletlenszerû irány beállítása
         getRandomDirection();
@@ -23,8 +28,11 @@ public class Asteroid : MonoBehaviour
 
     private void Update()
     {
-        // Mozgás a véletlenszerû irányba és sebességgel
-        transform.Translate(movementDirection * speed * Time.deltaTime);
+        // Sebesség alkalmazása
+        rb.velocity = movementDirection * speed;
+
+        rb.rotation = rb.rotation + rotationSpeed;
+
 
         // Ellenõrzés, hogy az aszteroida túllépte-e a határt
         CheckBoundary();
@@ -36,6 +44,7 @@ public class Asteroid : MonoBehaviour
         if (Mathf.Abs(transform.position.x) > boundaryLimit || Mathf.Abs(transform.position.y) > boundaryLimit)
         {
             getRandomDirection();
+
         }
     }
 
@@ -44,4 +53,5 @@ public class Asteroid : MonoBehaviour
         float angle = Random.Range(0f, 360f);
         movementDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)).normalized;
     }
+
 }

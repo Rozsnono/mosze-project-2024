@@ -10,8 +10,14 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth = 100f;
     public float maxShieldHealth = 50f;
     public float reloadTime = 5f;
+    public float shieldReloadTime = 1f;
     public float speed = 10f;
     public int skill = 0;
+
+    public float playerHealth = 100f;
+    public float shieldHealth = 0;
+
+    public int currectGame = 1;
 
     private void Awake()
     {

@@ -18,6 +18,7 @@ public class LoadingScreen : MonoBehaviour
 
     IEnumerator LoadSceneAsync()
     {
+        Debug.Log(sceneToLoad);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
         operation.allowSceneActivation = false; // Nem aktiválja automatikusan a jelenetet
 
