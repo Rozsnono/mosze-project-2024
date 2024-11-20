@@ -210,7 +210,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020e7f7bf594f2d4cbdec719a335801b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 0}
+  healthImages:
+  - {fileID: -1965317470, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: -2108302251, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: 1887278999, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: 766407790, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: -428304272, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: 92234772, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: -1340052481, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: -1978083363, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: 825538375, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
+  - {fileID: 1711461599, guid: 4d047289570e28d4984f3be9da1ce5bf, type: 3}
 --- !u!95 &5663540086573742522
 Animator:
   serializedVersion: 5
@@ -245,5 +255,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5359377007013131246, guid: e33b482a6dd695f44b3cfea31e17211c, type: 3}
-  reloadTimerText: {fileID: 0}
   weaponIndex: 0

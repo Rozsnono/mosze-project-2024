@@ -14,7 +14,7 @@ public class SkillManager : MonoBehaviour
     public TextMeshProUGUI reloadTimeText;
     public TextMeshProUGUI skillPointsText;
     public GameObject skillPanel;
-    public Button skilLButton;
+    public Button skillButton;
 
 
     public Button[] buttons;
@@ -23,11 +23,14 @@ public class SkillManager : MonoBehaviour
     {
         skillPanel.SetActive(false);
 
+
         if (PlayerStats.Instance == null)
         {
             Debug.LogError("PlayerStats instance is missing!");
             return;
         }
+        Debug.Log("Skills");
+        Debug.Log(PlayerStats.Instance.reloadTime);
         UpdateUI();
     }
 
@@ -84,18 +87,15 @@ public class SkillManager : MonoBehaviour
 
     public void OpenSkill()
     {
-        if (PlayerStats.Instance.skill > 0)
-        {
-            skillPanel.SetActive(true);
-            skilLButton.gameObject.SetActive(false);
-            UpdateUI();
-        }
+        skillPanel.SetActive(true);
+        skillButton.gameObject.SetActive(false);
+        UpdateUI();
     }
 
     public void CloseSkill()
     {
         skillPanel.SetActive(false);
-        skilLButton.gameObject.SetActive(true);
+        skillButton.gameObject.SetActive(true);
     }
 
     private void UpdateUI()

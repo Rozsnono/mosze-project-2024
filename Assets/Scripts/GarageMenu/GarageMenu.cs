@@ -43,6 +43,6 @@ public class GarageMenu : MonoBehaviour
     {
         PlayerPrefs.SetInt("SelectedSpaceshipIndex", currentIndex);
         PlayerPrefs.Save();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScene"); // Átváltás a betöltési képernyõre
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game"); // Átváltás a betöltési képernyõre
     }
 }

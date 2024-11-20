@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCollisiton : MonoBehaviour
 {
-    private TextMeshProUGUI healthText;      // A UI Text elem, ahol az életerõt megjelenítjük
+    private Image healthText;      // A UI Text elem, ahol az életerõt megjelenítjük
+    public Sprite[] healthImages;
 
     private void Start()
     {
 
         GameObject hTt = GameObject.FindGameObjectWithTag("HealtText");
-        healthText = hTt.GetComponent<TextMeshProUGUI>();
-        healthText.text = $"{PlayerStats.Instance.playerHealth:F0}/{PlayerStats.Instance.maxHealth:F0}";
+        healthText = hTt.GetComponent<Image>();
+        healthText.sprite = healthImages[healthImages.Length - 1];
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,7 +48,14 @@ public class PlayerCollisiton : MonoBehaviour
         else if (collision.gameObject.CompareTag("Gate"))
         {
             PlayerStats.Instance.currectGame += 1;
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_level"+ PlayerStats.Instance.currectGame);
+            if(PlayerStats.Instance.currectGame < 4)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Game_level"+ PlayerStats.Instance.currectGame);
+            }
+            else
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Game_End");
+            }
         }
         // Ha az életek elfogynak, meghívhatsz egy game over metódust
 
@@ -54,7 +63,8 @@ public class PlayerCollisiton : MonoBehaviour
         {
             GameOver();
         }
-        healthText.text = $"{PlayerStats.Instance.playerHealth:F0}/{PlayerStats.Instance.maxHealth:F0}";
+        healthText.sprite = healthImages[(int.Parse(PlayerStats.Instance.playerHealth.ToString()) / 10) - 1];
+
 
         //PlayerStats.Instance.speed = 0;
     }

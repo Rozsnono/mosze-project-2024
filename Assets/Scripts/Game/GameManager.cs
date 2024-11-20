@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Az objektum nem kerül megsemmisítésre jelenetváltáskor
+            //DontDestroyOnLoad(gameObject); // Az objektum nem kerül megsemmisítésre jelenetváltáskor
         }
         else
         {

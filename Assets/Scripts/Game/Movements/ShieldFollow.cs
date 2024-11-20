@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShieldFollow : MonoBehaviour
 {
@@ -10,13 +11,16 @@ public class ShieldFollow : MonoBehaviour
     private float currentShieldHealth; // Pajzs aktuális életereje
 
     private SpriteRenderer spriteRenderer;
-    public TextMeshProUGUI shieldHealtText;      // A UI Text elem, ahol az idõt megjelenítjük
     private Collider2D shieldCollider; // Pajzs hitbox (Collider)
 
     public TextMeshProUGUI reloadTimerText;      // A UI Text elem, ahol az idõt megjelenítjük
     private Rigidbody2D rb;
 
     private float lastUse = 0f;
+
+
+    public Image shieldHealtText;      // A UI Text elem, ahol az életerõt megjelenítjük
+    public Sprite[] shieldImages;
 
     private void Start()
     {
@@ -38,7 +42,6 @@ public class ShieldFollow : MonoBehaviour
 
         currentShieldHealth = PlayerStats.Instance.maxShieldHealth; // Életerõ beállítása maximális értékre
         DeactivateShield(); // Alapértelmezett állapotban elrejtjük a pajzsot
-        Debug.Log(currentShieldHealth);
 
     }
 
@@ -75,7 +78,7 @@ public class ShieldFollow : MonoBehaviour
 
     private void ActivateShield()
     {
-        shieldHealtText.text = $"{currentShieldHealth:F0}/{PlayerStats.Instance.maxShieldHealth:F0}";
+        shieldHealtText.sprite = shieldImages[shieldImages.Length - 1];
         currentShieldHealth = PlayerStats.Instance.maxShieldHealth; // Visszaállítjuk az életerõt
         spriteRenderer.enabled = true;         // Pajzs megjelenítése
         shieldCollider.enabled = true;         // Collider aktiválása
@@ -107,7 +110,7 @@ public class ShieldFollow : MonoBehaviour
             currentShieldHealth = 0;
             DeactivateShield(); // Pajzs kikapcsolása, ha életerõ nullára csökken
         }
-        shieldHealtText.text = $"{currentShieldHealth:F0}/{PlayerStats.Instance.maxShieldHealth:F0}";
+        shieldHealtText.sprite = shieldImages[(int.Parse(currentShieldHealth.ToString()) / 5)];
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
