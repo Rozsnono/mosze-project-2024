@@ -284,10 +284,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
+  currentHealth: 100
   maxHealth: 100
   maxShieldHealth: 50
   reloadTime: 5
-  shieldReloadTime: 1
+  shieldReloadTime: 15
   speed: 10
   skill: 0
   playerShipIndex: 0

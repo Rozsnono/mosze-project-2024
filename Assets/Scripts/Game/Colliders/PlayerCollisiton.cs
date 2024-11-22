@@ -7,15 +7,13 @@ using UnityEngine.UI;
 
 public class PlayerCollisiton : MonoBehaviour
 {
-    private Image healthText;      // A UI Text elem, ahol az életerõt megjelenítjük
-    public Sprite[] healthImages;
+    private Slider healthBar;
 
     private void Start()
     {
-
-        GameObject hTt = GameObject.FindGameObjectWithTag("HealtText");
-        healthText = hTt.GetComponent<Image>();
-        healthText.sprite = healthImages[(int.Parse(PlayerStats.Instance.playerHealth.ToString()) / 10) - 1];
+        GameObject hTt = GameObject.FindGameObjectWithTag("HealthText");
+        healthBar = hTt.GetComponent<Slider>();
+        UIRefresh();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -63,7 +61,7 @@ public class PlayerCollisiton : MonoBehaviour
         {
             GameOver();
         }
-        healthText.sprite = healthImages[(int.Parse(PlayerStats.Instance.playerHealth.ToString()) / 10) - 1];
+        UIRefresh();
 
 
         //PlayerStats.Instance.speed = 0;
@@ -75,5 +73,11 @@ public class PlayerCollisiton : MonoBehaviour
         // Itt meghívhatod a Game Over menüt, vagy újraindíthatod a játékot.
         SceneManager.LoadScene("GameOver");
 
+    }
+
+    private void UIRefresh()
+    {
+        healthBar.gameObject.SetActive(true);
+        healthBar.value = PlayerStats.Instance.playerHealth;
     }
 }

@@ -7,10 +7,11 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance { get; private set; }
 
     public float bulletSpeed = 20f;
+    public float currentHealth = 100f;
     public float maxHealth = 100f;
     public float maxShieldHealth = 50f;
     public float reloadTime = 5f;
-    public float shieldReloadTime = 1f;
+    public float shieldReloadTime = 15f;
     public float speed = 10f;
     public int skill = 0;
 
@@ -44,9 +45,25 @@ public class PlayerStats : MonoBehaviour
         maxHealth += amount;
     }
 
+    public void Heal(float amount)
+    {
+        if(playerHealth + amount < maxHealth)
+        {
+            playerHealth += amount;
+        }
+    }
+
     public void UpgradeMaxShieldHealth(float amount)
     {
         maxShieldHealth += amount;
+    }
+
+    public void HealShield(float amount)
+    {
+        if (shieldHealth + amount < maxShieldHealth)
+        {
+            shieldHealth += amount;
+        }
     }
 
     public void UpgradeSpeed(float amount)

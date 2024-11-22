@@ -48,7 +48,7 @@ public class SkillManager : MonoBehaviour
     {
         if (PlayerStats.Instance.skill > 0)
         {
-            PlayerStats.Instance.UpgradeMaxHealth(10f);
+            PlayerStats.Instance.Heal(10f);
             PlayerStats.Instance.skill--;
             UpdateUI();
         }
@@ -58,7 +58,7 @@ public class SkillManager : MonoBehaviour
     {
         if (PlayerStats.Instance.skill > 0)
         {
-            PlayerStats.Instance.UpgradeMaxShieldHealth(5f);
+            PlayerStats.Instance.HealShield(5f);
             PlayerStats.Instance.skill--;
             UpdateUI();
         }
@@ -101,8 +101,8 @@ public class SkillManager : MonoBehaviour
     private void UpdateUI()
     {
         bulletSpeedText.text = PlayerStats.Instance.bulletSpeed.ToString();
-        maxHealthText.text = PlayerStats.Instance.maxHealth.ToString();
-        maxShieldHealthText.text = PlayerStats.Instance.maxShieldHealth.ToString();
+        maxHealthText.text = PlayerStats.Instance.playerHealth.ToString();
+        maxShieldHealthText.text = PlayerStats.Instance.shieldHealth.ToString();
         reloadTimeText.text = PlayerStats.Instance.reloadTime.ToString();
         speedText.text = PlayerStats.Instance.speed.ToString();
         skillPointsText.text = PlayerStats.Instance.skill.ToString();

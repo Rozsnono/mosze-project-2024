@@ -13,7 +13,8 @@ TagManager:
   - Homing
   - Gate
   - ReloadText
-  - HealtText
+  - ShieldText
+  - HealthText
   layers:
   - Default
   - TransparentFX

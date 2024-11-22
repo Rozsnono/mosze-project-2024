@@ -19,8 +19,7 @@ public class ShieldFollow : MonoBehaviour
     private float lastUse = 0f;
 
 
-    public Image shieldHealtText;      // A UI Text elem, ahol az életerõt megjelenítjük
-    public Sprite[] shieldImages;
+    private Slider shieldHealthBar;
 
     private void Start()
     {
@@ -38,6 +37,10 @@ public class ShieldFollow : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         shieldCollider = GetComponent<Collider2D>();
         lastUse = Time.time - PlayerStats.Instance.shieldReloadTime;
+
+
+        GameObject shTt = GameObject.FindGameObjectWithTag("ShieldText");
+        shieldHealthBar = shTt.GetComponent<Slider>();
 
 
         currentShieldHealth = PlayerStats.Instance.maxShieldHealth; // Életerõ beállítása maximális értékre
@@ -78,7 +81,8 @@ public class ShieldFollow : MonoBehaviour
 
     private void ActivateShield()
     {
-        shieldHealtText.sprite = shieldImages[shieldImages.Length - 1];
+        shieldHealthBar.value = currentShieldHealth;
+
         currentShieldHealth = PlayerStats.Instance.maxShieldHealth; // Visszaállítjuk az életerõt
         spriteRenderer.enabled = true;         // Pajzs megjelenítése
         shieldCollider.enabled = true;         // Collider aktiválása
@@ -110,7 +114,7 @@ public class ShieldFollow : MonoBehaviour
             currentShieldHealth = 0;
             DeactivateShield(); // Pajzs kikapcsolása, ha életerõ nullára csökken
         }
-        shieldHealtText.sprite = shieldImages[(int.Parse(currentShieldHealth.ToString()) / 5)];
+        shieldHealthBar.value = currentShieldHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
