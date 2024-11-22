@@ -15,7 +15,7 @@ public class PlayerCollisiton : MonoBehaviour
 
         GameObject hTt = GameObject.FindGameObjectWithTag("HealtText");
         healthText = hTt.GetComponent<Image>();
-        healthText.sprite = healthImages[healthImages.Length - 1];
+        healthText.sprite = healthImages[(int.Parse(PlayerStats.Instance.playerHealth.ToString()) / 10) - 1];
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

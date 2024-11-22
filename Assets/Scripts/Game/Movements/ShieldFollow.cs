@@ -42,7 +42,7 @@ public class ShieldFollow : MonoBehaviour
 
         currentShieldHealth = PlayerStats.Instance.maxShieldHealth; // Életerõ beállítása maximális értékre
         DeactivateShield(); // Alapértelmezett állapotban elrejtjük a pajzsot
-
+        UIReload();
     }
 
     private void Update()

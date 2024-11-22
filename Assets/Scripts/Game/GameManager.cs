@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnPlayer(1);
+        SpawnPlayer(PlayerStats.Instance.playerShipIndex);
         SpawnEnemies();
         SpawnAsteroids();
         GenerateTilemap();

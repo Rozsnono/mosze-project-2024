@@ -14,6 +14,8 @@ public class PlayerStats : MonoBehaviour
     public float speed = 10f;
     public int skill = 0;
 
+    public int playerShipIndex = 0;
+
     public float playerHealth = 100f;
     public float shieldHealth = 0;
 
@@ -60,5 +62,10 @@ public class PlayerStats : MonoBehaviour
     public void AddSkillPoint(int amount)
     {
         skill += amount;
+    }
+
+    public void ChangePlayerShip(int amount)
+    {
+        playerShipIndex = amount;
     }
 }

@@ -22,6 +22,7 @@ public class GarageMenu : MonoBehaviour
     {
         currentIndex++;
         if (currentIndex >= spaceships.Length) currentIndex = 0;
+        PlayerStats.Instance.ChangePlayerShip(currentIndex);
         ShowSpaceship();
     }
 
@@ -29,6 +30,7 @@ public class GarageMenu : MonoBehaviour
     {
         currentIndex--;
         if (currentIndex < 0) currentIndex = spaceships.Length - 1;
+        PlayerStats.Instance.ChangePlayerShip(currentIndex);
         ShowSpaceship();
     }
 
