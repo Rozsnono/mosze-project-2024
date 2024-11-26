@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3179767070183616635}
         m_TargetAssemblyTypeName: SkillManager, Assembly-CSharp
         m_MethodName: CloseSkill
         m_Mode: 1
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3179767070183616635}
         m_TargetAssemblyTypeName: SkillManager, Assembly-CSharp
         m_MethodName: OpenSkill
         m_Mode: 1
@@ -2787,6 +2787,7 @@ GameObject:
   - component: {fileID: 5086480142175455215}
   - component: {fileID: 4400745484135577671}
   - component: {fileID: 5791041728956694814}
+  - component: {fileID: 3179767070183616635}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2870,6 +2871,32 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3179767070183616635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5926752901098903742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b177cf018b1e23c479083f39a9089649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealthText: {fileID: 8857996923686107871}
+  maxShieldHealthText: {fileID: 3358866103166520783}
+  speedText: {fileID: 447587170318652011}
+  bulletSpeedText: {fileID: 121080761945144200}
+  reloadTimeText: {fileID: 7252831611914875853}
+  skillPointsText: {fileID: 2693165222873197381}
+  skillPanel: {fileID: 5926752901098903742}
+  skillButton: {fileID: 3524471448161696860}
+  buttons:
+  - {fileID: 1838141959598845459}
+  - {fileID: 5160668921677917955}
+  - {fileID: 4538308383895012801}
+  - {fileID: 4779634437353296319}
+  - {fileID: 6958145838019435066}
 --- !u!1 &6117837483871890614
 GameObject:
   m_ObjectHideFlags: 0
