@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance { get; private set; }
 
-    public float bulletSpeed = 20f;
+    public float bulletSpeed = 20f; //lövedék sebessége
     public float currentHealth = 100f;
     public float maxHealth = 100f;
     public float maxShieldHealth = 50f;
@@ -73,7 +73,7 @@ public class PlayerStats : MonoBehaviour
 
     public void DecreaseReloadTime(float amount)
     {
-        reloadTime = Mathf.Max(1f, reloadTime - amount); // minimum 1 m�sodperc
+        reloadTime = Mathf.Max(1f, reloadTime - amount); // minimum 1 m�sodperc
     }
 
     public void AddSkillPoint(int amount)
