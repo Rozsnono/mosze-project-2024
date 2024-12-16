@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class SkillPointPickup : MonoBehaviour
 {
-    public int skillPointValue = 1; // Mennyi skill pontot adjon a játékosnak
+    public int skillPointValue = 1; // Mennyi skill pontot adjon a jatekosnak
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerStats.Instance.AddSkillPoint(skillPointValue); // Hozzáad egy skill pontot a játékoshoz
-            Destroy(gameObject); // Skill pont eltávolítása a jelenetbõl
+            PlayerStats.Instance.AddSkillPoint(skillPointValue); // Hozzaad egy skill pontot a jatekoshoz
+            Destroy(gameObject); // Skill pont eltavolitasa a jelenetbol
         }
     }
 }

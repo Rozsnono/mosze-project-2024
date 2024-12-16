@@ -5,13 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] playerPrefab; // A j·tÈkos prefabjai
-    public GameObject[] enemyPrefab; // Az ellensÈg prefabjai
+    public GameObject[] playerPrefab; // A jatekos prefabjai
+    public GameObject[] enemyPrefab; // Az ellenseg prefabjai
     public GameObject[] asteroidPrefab; // Az aszteroida prefabjai
     public GameObject bossPrefab; // A Boss prefabjai
-    public int gridSize = 100; // A grid mÈrete (100x100)
-    public int[] enemyCount = new int[] { 10, 10 }; // Az ellensÈgek sz·ma
-    public int[] asteroidCount = new int[] { 50, 10 }; // Az aszteroid·k sz·ma
+    public int gridSize = 100; // A grid merete (100x100)
+    public int[] enemyCount = new int[] { 10, 10 }; // Az ellensegek szama
+    public int[] asteroidCount = new int[] { 50, 10 }; // Az aszteroidak szama
     public Tilemap tilemap;
     public TileBase[] spaceTiles;
 
@@ -22,43 +22,43 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnPlayer(PlayerStats.Instance.playerShipIndex);
+        SpawnPlayer(PlayerStats.Instance.playerShipIndex); // J√°t√©kos spawnol√°sa az aktu√°lis haj√≥val
         SpawnEnemies();
         SpawnAsteroids();
         GenerateTilemap();
         SpawnBoss();
     }
 
-    private void SpawnEnemies()
+    private void SpawnEnemies() // Ellens√©gek spawnol√°sa
     {
         for (int i = 0; i < enemyCount.Length; i++) {
             for (int x = 0; x < enemyCount[i]; x++)
             {
-                Vector3 spawnPosition = GetRandomPosition();
+                Vector3 spawnPosition = GetRandomPosition(); // V√©letlenszer≈± poz√≠ci√≥ gener√°l√°sa az ellens√©gnek
                 Instantiate(enemyPrefab[i], spawnPosition, Quaternion.identity);
             }
         }
     }
 
-    private void SpawnAsteroids()
+    private void SpawnAsteroids() // Aszteroid√°k spawnol√°sa
     {
         for (int i = 0; i < asteroidCount.Length; i++)
         {
             for (int x = 0; x < asteroidCount[i]; x++)
             {
-                Vector3 spawnPosition = GetRandomPosition();
+                Vector3 spawnPosition = GetRandomPosition(); // V√©letlenszer≈± poz√≠ci√≥ gener√°l√°sa az aszteroid√°nak
                 Instantiate(asteroidPrefab[i], spawnPosition, Quaternion.identity);
             }
         }
     }
 
-    private void SpawnBoss()
+    private void SpawnBoss() // Boss spawnol√°sa meghat√°rozott poz√≠ci√≥ban
     {
         Vector3 spawnPosition = GetRandomBossPosition();
         Instantiate(bossPrefab, spawnPosition, Quaternion.identity);
     }
 
-    private Vector3 GetRandomPosition()
+    private Vector3 GetRandomPosition() // V√©letlenszer≈± poz√≠ci√≥ gener√°l√°sa, ami nem esik a k√∂z√©ppont k√∂zel√©be
     {
         float x, y;
         do
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         return new Vector3(x, y, -1);
     }
 
-    private Vector3 GetRandomBossPosition()
+    private Vector3 GetRandomBossPosition() // Boss poz√≠ci√≥ gener√°l√°sa meghat√°rozott sarkokban
     {
         float x = Random.Range(0, 3);
         switch (x)
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GenerateTilemap()
+    private void GenerateTilemap() // Tilemap gener√°l√°sa a p√°lya alapj√°hoz
     {
         for (int x = -gridSize; x < gridSize; x++)
         {
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void SpawnPlayer(int index)
+    private void SpawnPlayer(int index) // J√°t√©kos spawnol√°sa a p√°lya k√∂zep√©n az aktu√°lis haj√≥val
     {
         Vector3 spawnPosition = new Vector3(0,0,0);
         Instantiate(playerPrefab[index], spawnPosition, Quaternion.identity);
@@ -109,15 +109,15 @@ public class GameManager : MonoBehaviour
 
     private TileBase GetWeightedRandomTile()
     {
-        // Ha nincs csempe, tÈrjen vissza null·val
+        // Ha nincs csempe megadva, null√°val t√©r vissza
         if (spaceTiles == null || spaceTiles.Length == 0)
             return null;
 
-        // S˙lyozott vÈletlen v·laszt·s
+        // Sulyozott veletlen valasztas
         int totalWeight = 100;
         for (int i = 0; i < spaceTiles.Length; i++)
         {
-            totalWeight += spaceTiles.Length - i; // Az elsı csempÈnek nagyobb s˙lyt adunk
+            totalWeight += spaceTiles.Length - i; // Az elso csempenek nagyobb sulyt adunk
         }
 
         int randomWeight = Random.Range(0, totalWeight);
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Biztons·gi intÈzkedÈskÈnt az elsı elemet adja vissza, ha nincs tal·lat
+        // Biztonsagi intezkedeskent az elso elemet adja vissza, ha nincs talalat
         return spaceTiles[0];
     }
 
@@ -141,11 +141,11 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject); // Az objektum nem ker¸l megsemmisÌtÈsre jelenetv·lt·skor
+            //DontDestroyOnLoad(gameObject); // Az objektum nem kerul megsemmisitesre jelenetvaltaskor
         }
         else
         {
-            Destroy(gameObject); // Ha m·r lÈtezik egy pÈld·ny, tˆrˆlj¸k a m·sodikat
+            Destroy(gameObject); // Ha mar letezik egy peldany, toroljuk a masodikat
         }
     }
 }

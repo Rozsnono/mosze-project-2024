@@ -18,32 +18,32 @@ public class PlayerCollisiton : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy")) // EllenÅ‘rizzÃ¼k, hogy a jÃ¡tÃ©kos egy ellensÃ©ggel Ã¼tkÃ¶zÃ¶tt-e
         {
             PlayerStats.Instance.playerHealth -= 10;
-            Debug.Log("Játékos ütközött egy ellenséggel! Életek: " + PlayerStats.Instance.playerHealth);
+            Debug.Log("Jï¿½tï¿½kos ï¿½tkï¿½zï¿½tt egy ellensï¿½ggel! ï¿½letek: " + PlayerStats.Instance.playerHealth);
         }
-        else if (collision.gameObject.CompareTag("Asteroid"))
+        else if (collision.gameObject.CompareTag("Asteroid")) // EllenÅ‘rizzÃ¼k, hogy a jÃ¡tÃ©kos egy aszteroidÃ¡val Ã¼tkÃ¶zÃ¶tt-e
         {
             PlayerStats.Instance.playerHealth -= 5;
-            Debug.Log("Játékos ütközött egy aszteroidával! Életek: " + PlayerStats.Instance.playerHealth);
+            Debug.Log("Jï¿½tï¿½kos ï¿½tkï¿½zï¿½tt egy aszteroidï¿½val! ï¿½letek: " + PlayerStats.Instance.playerHealth);
         }
-        else if (collision.gameObject.CompareTag("EnemyBullet"))
+        else if (collision.gameObject.CompareTag("EnemyBullet")) // EllenÅ‘rizzÃ¼k, hogy a jÃ¡tÃ©kos egy ellensÃ©g rakÃ©tÃ¡jÃ¡val Ã¼tkÃ¶zÃ¶tt-e
         {
             PlayerStats.Instance.playerHealth -= 5;
-            Destroy(collision.gameObject);
-            Debug.Log("Játékos ütközött egy rakétával! Életek: " + PlayerStats.Instance.playerHealth);
+            Destroy(collision.gameObject); // RakÃ©ta eltÃ¡volÃ­tÃ¡sa a jÃ¡tÃ©ktÃ©rrÅ‘l
+            Debug.Log("Jï¿½tï¿½kos ï¿½tkï¿½zï¿½tt egy rakï¿½tï¿½val! ï¿½letek: " + PlayerStats.Instance.playerHealth);
         }
-        else if (collision.gameObject.CompareTag("Boss"))
+        else if (collision.gameObject.CompareTag("Boss")) // EllenÅ‘rizzÃ¼k, hogy a jÃ¡tÃ©kos a Boss-szal Ã¼tkÃ¶zÃ¶tt-e
         {
             PlayerStats.Instance.playerHealth -= 50;
         }
-        else if (collision.gameObject.CompareTag("Homing"))
+        else if (collision.gameObject.CompareTag("Homing")) // EllenÅ‘rizzÃ¼k, hogy a jÃ¡tÃ©kos egy hÅ‘keresÅ‘ rakÃ©tÃ¡val Ã¼tkÃ¶zÃ¶tt-e
         {
             PlayerStats.Instance.playerHealth -= 15;
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Gate"))
+        else if (collision.gameObject.CompareTag("Gate")) // EllenÅ‘rizzÃ¼k, hogy a jÃ¡tÃ©kos egy kapun Ã¡thaladt-e
         {
             PlayerStats.Instance.currectGame += 1;
             if(PlayerStats.Instance.currectGame < 4)
@@ -55,7 +55,7 @@ public class PlayerCollisiton : MonoBehaviour
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Game_End");
             }
         }
-        // Ha az életek elfogynak, meghívhatsz egy game over metódust
+        // Ha az ï¿½letek elfogynak, meghï¿½vhatsz egy game over metï¿½dust
 
         if (PlayerStats.Instance.playerHealth <= 0)
         {
@@ -70,7 +70,7 @@ public class PlayerCollisiton : MonoBehaviour
     private void GameOver()
     {
         Debug.Log("Game Over!");
-        // Itt meghívhatod a Game Over menüt, vagy újraindíthatod a játékot.
+        // Itt meghï¿½vhatod a Game Over menï¿½t, vagy ï¿½jraindï¿½thatod a jï¿½tï¿½kot.
         SceneManager.LoadScene("GameOver");
 
     }

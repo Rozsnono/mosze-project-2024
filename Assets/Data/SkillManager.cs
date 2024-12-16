@@ -21,7 +21,7 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
-        skillPanel.SetActive(false);
+        skillPanel.SetActive(false); // Kezdetben a képesség panel rejtett
 
 
         if (PlayerStats.Instance == null)
@@ -29,22 +29,22 @@ public class SkillManager : MonoBehaviour
             Debug.LogError("PlayerStats instance is missing!");
             return;
         }
-        Debug.Log("Skills");
-        Debug.Log(PlayerStats.Instance.reloadTime);
+        Debug.Log("Skills"); // Napló üzenet a teszteléshez
+        Debug.Log(PlayerStats.Instance.reloadTime); // Jelenlegi újratöltési idő naplózása
         UpdateUI();
     }
 
-    public void UpgradeBulletSpeed()
+    public void UpgradeBulletSpeed() // Lövedék sebességének fejlesztése
     {
-        if (PlayerStats.Instance.skill > 0)
+        if (PlayerStats.Instance.skill > 0) // Ellenőrzi, van-e elég képességpont
         {
-            PlayerStats.Instance.UpgradeBulletSpeed(2f);
-            PlayerStats.Instance.skill--;
+            PlayerStats.Instance.UpgradeBulletSpeed(2f); // Növeli a lövedék sebességét
+            PlayerStats.Instance.skill--; // Csökkenti a képességpontok számát
             UpdateUI();
         }
     }
 
-    public void UpgradeMaxHealth()
+    public void UpgradeMaxHealth() // Maximális életerő fejlesztése
     {
         if (PlayerStats.Instance.skill > 0)
         {
@@ -54,7 +54,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void UpgradeMaxShieldHealth()
+    public void UpgradeMaxShieldHealth() // Pajzs maximális életerejének fejlesztése
     {
         if (PlayerStats.Instance.skill > 0)
         {
@@ -64,7 +64,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void DecreaseReloadTime()
+    public void DecreaseReloadTime() // Újratöltési idő csökkentése
     {
         if (PlayerStats.Instance.skill > 0)
         {
@@ -74,7 +74,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void UpgradeSpeed()
+    public void UpgradeSpeed() // Játékos sebességének növelése
     {
         if (PlayerStats.Instance.skill > 0)
         {
@@ -85,20 +85,20 @@ public class SkillManager : MonoBehaviour
     }
 
 
-    public void OpenSkill()
+    public void OpenSkill() // Képesség panel megnyitása
     {
         skillPanel.SetActive(true);
         skillButton.gameObject.SetActive(false);
         UpdateUI();
     }
 
-    public void CloseSkill()
+    public void CloseSkill() // Képesség panel bezárása
     {
         skillPanel.SetActive(false);
         skillButton.gameObject.SetActive(true);
     }
 
-    private void UpdateUI()
+    private void UpdateUI()  // UI elemek frissítése a játékos aktuális statisztikáinak megfelelően
     {
         bulletSpeedText.text = PlayerStats.Instance.bulletSpeed.ToString();
         maxHealthText.text = PlayerStats.Instance.playerHealth.ToString();
@@ -107,7 +107,7 @@ public class SkillManager : MonoBehaviour
         speedText.text = PlayerStats.Instance.speed.ToString();
         skillPointsText.text = PlayerStats.Instance.skill.ToString();
 
-        foreach (var item in buttons)
+        foreach (var item in buttons) // A gombok aktiválása vagy letiltása attól függően, hogy van-e elég képességpont
         {
             if(PlayerStats.Instance.skill > 0)
             {

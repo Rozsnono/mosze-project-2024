@@ -7,9 +7,9 @@ using TMPro;
 
 public class LoadingScreen : MonoBehaviour
 {
-    public string sceneToLoad; // A betölteni kívánt jelenet neve
-    public TextMeshProUGUI loadingText; // Betöltési szöveg
-    public Slider loadingSlider; // Betöltési csúszka
+    public string sceneToLoad; // A betÃ¶lteni kÃ­vÃ¡nt jelenet neve
+    public TextMeshProUGUI loadingText; // BetÃ¶ltÃ©si szÃ¶veg
+    public Slider loadingSlider; // BetÃ¶ltÃ©si csÃºszka
 
     void Start()
     {
@@ -20,27 +20,27 @@ public class LoadingScreen : MonoBehaviour
     {
         Debug.Log(sceneToLoad);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
-        operation.allowSceneActivation = false; // Nem aktiválja automatikusan a jelenetet
+        operation.allowSceneActivation = false; // Nem aktivÃ¡lja automatikusan a jelenetet
 
         while (!operation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f); // A progress értéke 0-0.9 között van
+            float progress = Mathf.Clamp01(operation.progress / 0.9f); // A progress Ã©rtÃ©ke 0-0.9 kÃ¶zÃ¶tt van
             loadingSlider.value = progress;
 
-            loadingText.text = "Töltés... " + (progress * 100).ToString("F0") + "%"; // Frissítjük a szöveget
+            loadingText.text = "Toltes... " + (progress * 100).ToString("F0") + "%"; // FrissÃ­tjÃ¼k a szÃ¶veget
 
-            if (operation.progress >= 0.9f) // Ha a betöltés kész
+            if (operation.progress >= 0.9f) // Ha a betÃ¶ltÃ©s kÃ©sz
             {
-                loadingText.text = "Press 'SPACE' to continue"; // Változtatjuk a szöveget
-                loadingSlider.gameObject.SetActive(false); // Opció: eltüntethetjük a csúszkát
+                loadingText.text = "Press 'SPACE' to continue";
+                loadingSlider.gameObject.SetActive(false);
 
-                if (Input.GetKeyDown(KeyCode.Space)) // Ha a játékos megnyomja a Space gombot
+                if (Input.GetKeyDown(KeyCode.Space)) // Ha a jÃ¡tÃ©kos megnyomja a Space gombot
                 {
-                    operation.allowSceneActivation = true; // Betölti a jelenetet
+                    operation.allowSceneActivation = true; // BetÃ¶lti a jelenetet
                 }
             }
 
-            yield return null; // Várunk a következõ frame-re
+            yield return null; // VÃ¡runk a kÃ¶vetkezÃ¶ frame-re
         }
     }
 }

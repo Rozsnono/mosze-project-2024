@@ -8,35 +8,35 @@ using UnityEngine.SceneManagement;
 public class GameOverDisplay : MonoBehaviour
 {
     public TextMeshProUGUI storyText;
-    public Button acceptButton;
+    public Button acceptButton; // A "Tovább" gomb a játékos döntéséhez
 
-    public string fullStory = "Game Over"; // Itt add meg a teljes sz�veget
-    public float textSpeed = 0.05f;
+    public string fullStory = "Game Over";
+    public float textSpeed = 0.05f; // A szöveg megjelenítési sebessége (karakterenkénti késleltetés)
 
     void Start()
     {
-        acceptButton.gameObject.SetActive(false);
-        StartCoroutine(DisplayStory());
+        acceptButton.gameObject.SetActive(false); // A gomb kezdetben rejtve van
+        StartCoroutine(DisplayStory()); // Elindítja a "Game Over" szöveg karakterenkénti megjelenítését
 
-        acceptButton.onClick.AddListener(Accept);
+        acceptButton.onClick.AddListener(Accept); // A gombhoz esemény-hozzárendelés
     }
 
     IEnumerator DisplayStory()
     {
-        storyText.text = "";
-        foreach (char letter in fullStory.ToCharArray())
+        storyText.text = ""; // Törli a szövegmezőt az elején
+        foreach (char letter in fullStory.ToCharArray()) // Karakterenként megjeleníti a teljes szöveget
         {
             storyText.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
 
-        // Ha a t�rt�net v�g�re �rt, megjelennek a gombok
+        // A történet végén megjelenik a gomb
         acceptButton.gameObject.SetActive(true);
     }
 
     void Accept()
     {
-        // T�lts�k be a j�t�k k�vetkez� jelenet�t vagy kezdj�nk el valamilyen logik�t
+        // Átvált a főmenü jelenetére
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -7,13 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        //Betölti a következõ Scene-t
+        //BetÃ¶lti a kÃ¶vetkezÅ‘ Scene-t
         SceneManager.LoadSceneAsync(1);
     }
 
     public void Quit()
     {
-        //Kiléptet a játékból
+        //KilÃ©ptett a jÃ¡tÃ©kbÃ³l
         Application.Quit();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Spaceship
 {
-    public string name;             // Az ûrhajó neve
-    public Sprite image;            // Az ûrhajó képe
-    public string description;      // Az ûrhajó leírása
+    public string name;             // Az urhajo neve
+    public Sprite image;            // Az urhajo kepe
+    public string description;      // Az urhajo leirasa
 }
